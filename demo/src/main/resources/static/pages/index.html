@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/jquery.js"></script>
+</head>
+<body>
+<h1>登录成功！</h1>
+<input id="tuiChu" type="button" value="退出登录">
+<script>
+    localStorage.getItem("tokenId");
+    var ur="http://39.101.199.6:8083/"
+    $("#tuiChu").click(function (){
+        $.ajax({
+            url:ur+"user/nologin",
+            type:"get",
+            //设置ajax请求结束后的执行动作
+            complete:function (xhr){
+                localStorage.removeItem("tokenId")
+                window.location.href=ur+xhr.getResponseHeader("CONTENTPATH")
+            },
+        })
+    })
+
+
+</script>
+</body>
+</html>
