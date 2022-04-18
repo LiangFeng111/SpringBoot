@@ -56,6 +56,9 @@ public class HelloController {
         return map;
     }
 
+
+
+
     //清除登录
     @RequestMapping("/nologin")
     @ResponseBody
@@ -108,11 +111,12 @@ public class HelloController {
 
     //注册
     @RequestMapping(value = "/register" ,method = RequestMethod.POST)
+    @ResponseBody
     public String  register(@RequestBody List<User> userList,HttpServletRequest request){
         User user = userList.get(0);
         user.setPassword(MD5Util.string2MD5(user.getPassword()));
         userService.addUser(user);
-        return "forward:/pages/login.html";
+        return "pages/logins.html";
     }
 
 

@@ -19,8 +19,8 @@
         <div class="ui inverted secondary stackable menu">
             <h2 class="ui olive header item" style="font-family: STSong">小禧同学</h2>
             <!--<div class="right m-item item m-mobile-hide">-->
-                <a href="index.html" class="active m-item item"><i class="home icon"></i>首页</a>
-                <a href="types.html" class="m-item item"><i class="clone outline icon"></i>分类</a>
+                <a href="#" th:href="${index}" class="active m-item item"><i class="home icon"></i>首页</a>
+                <a href="#"th:href="${types}" class="m-item item"><i class="clone outline icon"></i>分类</a>
                 <a href="archives.html" class="m-item item"><i class="clock icon"></i>时间轴</a>
                 <a href="music.html" class="m-item item"><i class="music icon"></i>音乐盒</a>
                 <a href="message.html" class="m-item item"><i class="book icon"></i>留言板</a>
@@ -84,14 +84,14 @@
         <h5 class="m-font-size-text-init-title">“若一去不回……”</h5>
         <h5 class="m-font-size-text-init-title">“便一去不回”</h5>
         <div id="waypoint" class="ui m-margin-top-large" align="center">
-            <a href="#" class="ui circular icon button m-opacity-small m-item item m-mobile-hide m-index-btn" th:classappend="${n==1} ? 'active'"><i class="home icon"></i>首页</a>
-            <a href="#" class="ui circular icon button m-opacity-small m-item item m-mobile-hide m-index-btn" th:classappend="${n==2} ? 'active'"><i class="clone outline icon"></i>分类</a>
-            <a href="#" class="ui circular icon button m-opacity-small m-item item m-mobile-hide m-index-btn" th:classappend="${n==4} ? 'active'"><i class="clock icon"></i>时间轴</a>
-            <a href="#" class="ui circular icon button m-opacity-small m-item item m-mobile-hide m-index-btn" th:classappend="${n==5} ? 'active'"><i class="music icon"></i>音乐盒</a>
-            <a href="#" class="ui circular icon button m-opacity-small m-item item m-mobile-hide m-index-btn" th:classappend="${n==6} ? 'active'"><i class="book icon"></i>留言板</a>
-            <a href="#" class="ui circular icon button m-opacity-small m-item item m-mobile-hide m-index-btn" th:classappend="${n==7} ? 'active'"><i class="pencil alternate icon"></i>友人帐</a>
-            <a href="#" class="ui circular icon button m-opacity-small m-item item m-mobile-hide m-index-btn" th:classappend="${n==8} ? 'active'"><i class="image icon"></i>照片墙</a>
-            <a href="#" class="ui circular icon button m-opacity-small m-item item m-mobile-hide m-index-btn" th:classappend="${n==9} ? 'active'"><i class="info icon"></i>关于我</a>
+            <a href="#" class="ui circular icon button m-opacity-small m-item item m-mobile-hide m-index-btn" th:href="${index}"><i class="home icon"></i>首页</a>
+            <a href="#" class="ui circular icon button m-opacity-small m-item item m-mobile-hide m-index-btn" th:href="${types}"><i class="clone outline icon"></i>分类</a>
+            <a href="#" class="ui circular icon button m-opacity-small m-item item m-mobile-hide m-index-btn" th:href="${archives}"><i class="clock icon"></i>时间轴</a>
+            <a href="#" class="ui circular icon button m-opacity-small m-item item m-mobile-hide m-index-btn" th:href="${music}"><i class="music icon"></i>音乐盒</a>
+            <a href="#" class="ui circular icon button m-opacity-small m-item item m-mobile-hide m-index-btn" th:href="${message}"><i class="book icon"></i>留言板</a>
+            <a href="#" class="ui circular icon button m-opacity-small m-item item m-mobile-hide m-index-btn" th:href="${friends}"><i class="pencil alternate icon"></i>友人帐</a>
+            <a href="#" class="ui circular icon button m-opacity-small m-item item m-mobile-hide m-index-btn" th:href="${picture}"><i class="image icon"></i>照片墙</a>
+            <a href="#" class="ui circular icon button m-opacity-small m-item item m-mobile-hide m-index-btn" th:href="${about}"><i class="info icon"></i>关于我</a>
         </div>
         <div class="hiddenDiv"></div>
     </div>
@@ -273,6 +273,7 @@
 <script>
 
     // $('#newblog-container').load(/*[[@{/footer/newblog}]]*/"/footer/newblog");
+
 
 
     // 运行时间统计

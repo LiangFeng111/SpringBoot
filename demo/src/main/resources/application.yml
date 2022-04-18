@@ -4,12 +4,14 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: ciy
     password: 456321
-
-
+  #模板热部署、禁用 thymeleaf 缓存
+  thymeleaf:
+    cache: false
 
 #mybatis
 mybatis:
   mapper-locations: classpath:mapper/*Mapper.xml #mapper映射文件路径
   type-aliases-package: com.spring.demo.entity #定义别名
   #config-location: #指定核心配置文件
+
 

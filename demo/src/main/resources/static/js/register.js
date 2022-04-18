@@ -2,7 +2,7 @@ $(function (){
     var ifname = -1;
     var ifemail=-1
     var ifpassword=-1;
-    var ur="http://39.101.199.6:8083/"
+    var ur="http://localhost:8083/"
     $("#zhu").click(function () {
         var code = $("input[name='code']").val().trim();
         var errors = $("#errros");
@@ -80,6 +80,8 @@ $(function (){
             success: function (data) {
                 alert("注册成功，请登录！")
                 console.log(data)
+                window.location.href=ur+data;
+
             },
             error: function (error) {
                 console.log(error)
