@@ -5,6 +5,30 @@
     <title>Title</title>
 </head>
 <body>
-<h1>访问被拦截，请登录！</h1>
+<script src="../js/jquery.js"></script>
+<script src="../js/vue.js"></script>
+<div id="app">
+  <h1 onclick="a('就这')">访问被拦截，请登录！</h1>
+  <input type="text" v-model="message"  @keyup.enter="getJoke" >
+  <h2>{{message}}</h2>
+</div>
+<script>
+  new Vue({
+        el:"#app",
+        data:{
+            message:"就这啊"
+        },
+        methods:{
+          getJoke:()=>{
+            console.log()
+            }
+        }
+    })
+    var a=data=>{
+        console.log(data);
+    }
+
+
+</script>
 </body>
 </html>

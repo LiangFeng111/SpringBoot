@@ -30,7 +30,7 @@ public class HelloController {
     UserService userService;
 
     //登录
-    @RequestMapping(value = "/login",method = RequestMethod.POST)
+    @RequestMapping(value = "/lgoin",method = RequestMethod.POST)
     @ResponseBody
     public Map<String ,Object> login(@RequestParam("username") String username, @RequestParam("password")String password,@RequestParam("loginCode") String loginCode, HttpServletRequest request,HttpServletResponse response){
         HttpSession session = request.getSession();
@@ -39,7 +39,6 @@ public class HelloController {
         //判断两字符串忽略大小写是否相等
         if (!sloginCode.equalsIgnoreCase(loginCode)){
             map.put("login","-1");
-
         }else {
             String pass = MD5Util.string2MD5(password);
             boolean login = userService.login(username, pass);
@@ -71,12 +70,13 @@ public class HelloController {
 
     //登录验证码
     @RequestMapping(value = "/loginCode")
-    public void loginCode( HttpServletRequest request, HttpServletResponse response) throws IOException {
+    public void loginCode(HttpServletRequest request, HttpServletResponse response) throws IOException {
         HttpSession session = request.getSession();
         //生成验证码
         ServletOutputStream os = response.getOutputStream();
         String loginCode = VerifyCodeUtils.outputVerifyImage(100,50,os,4);
         session.setAttribute("loginCode",loginCode);
+        System.out.println(loginCode);
     }
 
 
@@ -112,10 +112,24 @@ public class HelloController {
     //注册
     @RequestMapping(value = "/register" ,method = RequestMethod.POST)
     @ResponseBody
-    public String  register(@RequestBody List<User> userList,HttpServletRequest request){
+    public String  register(@RequestBody  List<User> userList){
+        System.out.println(userList);
         User user = userList.get(0);
         user.setPassword(MD5Util.string2MD5(user.getPassword()));
         userService.addUser(user);
+        return "pages/logins.html";
+    }
+
+    //注册
+    @RequestMapping(value = "/register1" ,method = RequestMethod.POST)
+    @ResponseBody
+    public String  register(@RequestBody Map<String ,Object> map ){
+        System.out.println(map);
+        User user1 = new User();
+        user1.setPassword(String.valueOf(map.get("password")));
+        user1.setUsername(String.valueOf(map.get("username")));
+        user1.setEmail((String) map.get("email"));
+        userService.addUser(user1);
         return "pages/logins.html";
     }
 

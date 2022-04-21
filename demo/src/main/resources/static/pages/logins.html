@@ -58,10 +58,11 @@
 <script>
     //点图片切换验证码
     var ur="http://39.101.199.6:8083/"
-    $("#checkCodeImg").onclick = function (){
+    $("#checkCodeImg").click( function (){
         //在后面加毫秒值，这样浏览器缓存的就不一样
-       $("#checkCodeImg").src = ur+"user/loginCode?"+new Date().getMilliseconds();
-    }
+        var a=ur+"user/loginCode"+new Date().getMilliseconds();
+       $("#checkCodeImg").src = ur+"user/loginCode"+new Date().getMilliseconds();
+    })
     $("#zhu").click(function (){
         window.location.href="register.html";
     })

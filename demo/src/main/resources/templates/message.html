@@ -219,7 +219,6 @@
         <div style="color: #F08047;margin-top: -18px" class="ui inverted m-text-thin m-text-spaced">我的客栈已营业：<span id="htmer_time" class="item m-text-thin"></span> (*๓´╰╯`๓)</div>
         <a rel="nofollow" href="http://www.beian.miit.gov.cn" target="_blank">赣ICP备20004408号-1</a>
     </div>
-    </div>
 
 </footer>
 
@@ -331,46 +330,50 @@
 
 
     // 发送请求给后端
-    //     function postData() {
-    //         $("#message-container").load(/*[[@{/messages}]]*/"",{
-    //             "parentMessage.id" : $("[name='parentMessage.id']").val(),
-    //             // "blog.id" : $("[name='blog.id']").val(),
-    //             "nickname": $("[name='nickname']").val(),
-    //             "email"   : $("[name='email']").val(),
-    //             "content" : $("[name='content']").val()
-    //         },function (responseTxt, statusTxt, xhr) {
-    // //        $(window).scrollTo($('#message-container'),500);
-    //             clearContent();
-    //         });
-    //     }
+        function postData() {
+            $("#message-container").load("http://localhost:8083/user/login",{
+                // "parentMessage.id" : $("[name='parentMessage.id']").val(),
+                // "blog.id" : $("[name='blog.id']").val(),
+                // "nickname": $("[name='nickname']").val(),
+                // "email"   : $("[name='email']").val(),
+                // "content" : $("[name='content']").val()
+              "username": $("[name='nickname']").val(),
+              "password"   : $("[name='email']").val(),
+              "loginCode" : $("[name='content']").val()
+            },function (responseTxt, statusTxt, xhr) {
+              //scrollTo () 方法可把内容滚动到指定的坐标。
+           $(window).scrollTo($('#message-container'),500);
+                clearContent();
+            });
+        }
 
     //发布
-    function postData(){
-        var nickname= $("[name='nickname']").val();
-        var email= $("[name='email']").val();
-        var content= $("[name='content']").val();
-        var huifu = $("[name='parentMessage.id']").val();
-        var js = {"name":nickname,"email":email,"content":content,"huifu":huifu}
-        $.ajax({
-            url:"http://124.222.75.57:81/insert_http",
-            type:"GET",
-            dataType:"JSON",
-            data:js,
-            success:function (data){
-                console.log(data["ab"]);
-                location.reload();
-            },
-            error:function(XMLHttpRequest, textStatus, errorThrown){
-                // 状态码
-                console.log(XMLHttpRequest.status);
-                // 状态
-                console.log(XMLHttpRequest.readyState);
-                // 错误信息
-                console.log(textStatus);
-            }
-        })
-
-    }
+    // function postData(){
+    //     var nickname= $("[name='nickname']").val();
+    //     var email= $("[name='email']").val();
+    //     var content= $("[name='content']").val();
+    //     var huifu = $("[name='parentMessage.id']").val();
+    //     var js = {"name":nickname,"email":email,"content":content,"huifu":huifu}
+    //     $.ajax({
+    //         url:"http://124.222.75.57:81/insert_http",
+    //         type:"GET",
+    //         dataType:"JSON",
+    //         data:js,
+    //         success:function (data){
+    //             console.log(data["ab"]);
+    //             location.reload();
+    //         },
+    //         error:function(XMLHttpRequest, textStatus, errorThrown){
+    //             // 状态码
+    //             console.log(XMLHttpRequest.status);
+    //             // 状态
+    //             console.log(XMLHttpRequest.readyState);
+    //             // 错误信息
+    //             console.log(textStatus);
+    //         }
+    //     })
+    //
+    // }
 
     // 清除表单
     function clearContent() {
